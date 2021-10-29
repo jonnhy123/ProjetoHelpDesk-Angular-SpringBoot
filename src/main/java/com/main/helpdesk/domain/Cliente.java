@@ -1,23 +1,36 @@
 package com.main.helpdesk.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cliente extends Pessoa {
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
+import com.main.helpdesk.domain.enums.Perfil;
+
+@Entity
+public class Cliente extends Pessoa implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	/**
 	 * Create class by: @author Jhonatan
 	 *
 	 *  28 de out. de 2021 22:21:19 
 	 */
 	
+	@OneToMany(mappedBy = "cliente")
 	private List<Chamado> chamados = new ArrayList<>();
 
 	public Cliente() {
 		super();
+		addPerfil(Perfil.CLIENTE);
 	}
 
 	public Cliente(Integer id, String nome, String cpf, String email, String senha) {
 		super(id, nome, cpf, email, senha);
+		
+		addPerfil(Perfil.CLIENTE);
 	}
 
 	public List<Chamado> getChamados() {
