@@ -7,18 +7,20 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.main.helpdesk.domain.enums.Perfil;
 
+/**
+ * Create class by: @author Jhonatan
+ *
+ *  28 de out. de 2021 22:22:04 
+ */
 @Entity
 public class Tecnico extends Pessoa implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	/**
-	 * Create class by: @author Jhonatan
-	 *
-	 *  28 de out. de 2021 22:22:04 
-	 */
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "tecnico")
 	private List<Chamado> chamados = new ArrayList<>();
 

@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.main.helpdesk.domain.enums.Perfil;
 
 @Entity
@@ -19,6 +20,7 @@ public class Cliente extends Pessoa implements Serializable {
 	 *  28 de out. de 2021 22:21:19 
 	 */
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "cliente")
 	private List<Chamado> chamados = new ArrayList<>();
 
